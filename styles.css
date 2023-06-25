@@ -1,0 +1,23 @@
+:root {
+    --pixelSize: 16px;
+}
+
+* {
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+div#grid {
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+div.pixel {
+    width: var(--pixelSize);
+    min-height: var(--pixelSize);
+}
+div.pixel:hover {
+    background-color: blue;
+}
