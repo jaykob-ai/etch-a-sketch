@@ -1,13 +1,21 @@
 let pixels = 16;
 let pixelSize = 3.75;
 let r = document.querySelector(':root');
+let penColor = 'blue';
 
 const btn = document.getElementById('askHowMany');
 btn.addEventListener('click', () => {
     clearGrid();
-    pixels = prompt('How many pixels would you like on either side?', '');
+    pixels = prompt('How many squares would you like on either side?', '');
     makeGrid();
 });
+
+const red = document.getElementById('penRed');
+red.addEventListener('click', () => penColor = 'red');
+const blue = document.getElementById('penBlue');
+blue.addEventListener('click', () => penColor = 'blue');
+const eraser = document.getElementById('eraser');
+eraser.addEventListener('click', () => penColor = 'white');
 
 function getPixelSize() {
     pixelSize = 720 / pixels + 'px';
@@ -21,7 +29,7 @@ function makeGrid() {
         setPixelSizeInCss();
         pixel.classList.add('pixel');
         pixel.addEventListener('mouseover', function() {
-            this.style.backgroundColor = 'red';
+            this.style.backgroundColor = penColor;
         });
         div.appendChild(pixel);
     }
