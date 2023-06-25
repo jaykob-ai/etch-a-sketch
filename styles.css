@@ -7,17 +7,25 @@
     margin: 0;
     padding: 0;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 div#grid {
-    height: 600px;
-    width: 600px;
+    height: 720px;
+    width: 720px;
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid black;
 }
 div.pixel {
     width: var(--pixelSize);
     min-height: var(--pixelSize);
 }
-div.pixel:hover {
+.colored {
     background-color: blue;
 }

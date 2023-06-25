@@ -8,12 +8,9 @@ btn.addEventListener('click', () => {
     pixels = prompt('How many pixels would you like on either side?', '');
     makeGrid();
 });
-/* console.log(pixels);
-const test = document.getElementById('test');
-test.addEventListener('click', () => alert(pixels)); */
 
 function getPixelSize() {
-    pixelSize = 600 / pixels + 'px';
+    pixelSize = 720 / pixels + 'px';
     return pixelSize;
 }
 function makeGrid() {
@@ -23,6 +20,9 @@ function makeGrid() {
         getPixelSize();
         setPixelSizeInCss();
         pixel.classList.add('pixel');
+        pixel.addEventListener('mouseover', function() {
+            this.style.backgroundColor = 'red';
+        });
         div.appendChild(pixel);
     }
 }
