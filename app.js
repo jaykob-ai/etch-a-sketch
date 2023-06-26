@@ -2,6 +2,7 @@ let pixels = 16;
 let pixelSize = 3.75;
 let r = document.querySelector(':root');
 let penColor = 'blue';
+let isColored = false;
 
 const btn = document.getElementById('askHowMany');
 btn.addEventListener('click', () => {
@@ -11,14 +12,30 @@ btn.addEventListener('click', () => {
 });
 
 const red = document.getElementById('penRed');
-red.addEventListener('click', () => penColor = 'red');
+red.addEventListener('click', () => {
+    isColored = false;
+    penColor = 'red';
+});
 const blue = document.getElementById('penBlue');
-blue.addEventListener('click', () => penColor = 'blue');
+blue.addEventListener('click', () => {
+    isColored = false;
+    penColor = 'blue'
+});
 const eraser = document.getElementById('eraser');
-eraser.addEventListener('click', () => penColor = 'white');
+eraser.addEventListener('click', () => {
+    isColored = false;
+    penColor = 'white'
+});
+const random = document.getElementById('random');
+random.addEventListener('click', () => {
+    isColored = false;
+    penColor = `rgb(${randomValue()},${randomValue()},${randomValue()})`
+});
+const colored = document.getElementById('colored');
+colored.addEventListener('click', () => {isColored = true});
 
 function getPixelSize() {
-    pixelSize = 720 / pixels + 'px';
+    pixelSize = 600 / pixels + 'px';
     return pixelSize;
 }
 function makeGrid() {
@@ -29,7 +46,11 @@ function makeGrid() {
         setPixelSizeInCss();
         pixel.classList.add('pixel');
         pixel.addEventListener('mouseover', function() {
-            this.style.backgroundColor = penColor;
+            if (isColored === false) {
+                this.style.backgroundColor = penColor;
+            } else {
+                this.style.backgroundColor = `rgb(${randomValue()},${randomValue()},${randomValue()})`;
+            }
         });
         div.appendChild(pixel);
     }
@@ -42,4 +63,11 @@ function clearGrid() {
     while(x[0]) { //erik fragen
         x[0].parentNode.removeChild(x[0]);
     }
+}
+function randomValue() {
+    let min = 0;
+    let max = 255;
+    Math.ceil(min);
+    Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
 }

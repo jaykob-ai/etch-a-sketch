@@ -16,8 +16,8 @@ body {
 
 
 div#grid {
-    height: 720px;
-    width: 720px;
+    height: 600px;
+    width: 600px;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid black;
